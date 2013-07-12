@@ -28,7 +28,7 @@ var CHECKSFILE_DEFAULT = "checks.json";
 
 var assertFileExists = function(infile) {
     var instr = infile.toString();
-    if(!fs.existsSinc(instr)) {
+    if(!fs.existsSync(instr)) {
 	console.log("%s does not exist. Exiting.", instr);
 	process.exit(1); // http://nodejs.org/api/process.html#process_process_exit_code
     }
@@ -66,7 +66,7 @@ if(require.main == module) {
 	.option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
 	.parse(process.argv);
     var checkJson = checkHtmlFile(program.file, program.checks);
-    var outJson = JSON.stringify(checJson, null, 4);
+    var outJson = JSON.stringify(checkJson, null, 4);
     console.log(outJson);
 } else {
     exports.checkHtmlFile = checkHtmlFile;
